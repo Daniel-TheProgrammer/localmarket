@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 
-class HomeScreen extends StatelessWidget {
+class UserScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: Center(
       child: Text(
-        'Home ',
+        'User ',
         style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
       ),
     ));

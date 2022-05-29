@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class Feeds extends StatelessWidget {
-  const Feeds({Key? key}) : super(key: key);
-
+class FeedsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Text('Feeds')
+        body: Center(
+      child: Text(
+        'Feeds ',
+        style: TextStyle(fontSize: 30, fontWeight: FontWeight.w800),
       ),
-    );
+    ));
   }
 }
