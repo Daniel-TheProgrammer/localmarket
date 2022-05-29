@@ -68,6 +68,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
             unselectedItemColor: Theme.of(context).textSelectionColor,
             selectedItemColor: Colors.purple,
             currentIndex: _selectedIndex,
+            selectedLabelStyle: TextStyle(fontSize: 16),
             items: [
               BottomNavigationBarItem(
                 icon: Icon(Icons.home),
