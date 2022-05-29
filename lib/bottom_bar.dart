@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_icons/flutter_icons.dart';
 
 import 'screens/cart.dart';
 import 'screens/feeds.dart';
@@ -13,20 +14,20 @@ class BottomBarScreen extends StatefulWidget {
 }
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
-   List? _pages ;
+  List? _pages;
 
   // var _pages;
   int _selectedIndex = 0;
 
   @override
   void initState() {
-   _pages = [
-    HomeScreen(),
-    FeedsScreen(),
-    SearchScreen(),
-    CartScreen(),
-    UserScreen(),
-  ];
+    _pages = [
+      HomeScreen(),
+      FeedsScreen(),
+      SearchScreen(),
+      CartScreen(),
+      UserScreen(),
+    ];
     // _pages = [
     //   {'page': HomeScreen(), 'title': 'Home Screen'},
     //   {'page': FeedsScreen(), 'title': 'Feeds screen'},
@@ -71,12 +72,12 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
             selectedLabelStyle: TextStyle(fontSize: 16),
             items: [
               BottomNavigationBarItem(
-                icon: Icon(Icons.home),
+                icon: Icon(Feather.home),
                 tooltip: 'Home',
                 label: 'Home',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.rss_feed),
+                icon: Icon(Feather.rss),
                 tooltip: 'Feeds',
                 label: 'Feeds',
               ),
@@ -90,12 +91,12 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
                 label: 'Search',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.shopping_bag),
+                icon: Icon(MaterialCommunityIcons.cart),
                 tooltip: 'Cart',
                 label: 'Cart',
               ),
               BottomNavigationBarItem(
-                icon: Icon(Icons.person),
+                icon: Icon(Feather.user),
                 tooltip: 'User',
                 label: 'User',
               ),
@@ -109,7 +110,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
         backgroundColor: Colors.purple,
         tooltip: 'Search',
         elevation: 5,
-        child: (const Icon(Icons.search)),
+        child: (const Icon(Feather.search)),
         onPressed: () {
           setState(() {
             _selectedIndex = 2;
