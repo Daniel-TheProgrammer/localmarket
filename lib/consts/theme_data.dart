@@ -3,25 +3,22 @@ import 'package:flutter/material.dart';
 class Styles {
   static ThemeData themeData(bool isDarkTheme, BuildContext context) {
     return ThemeData(
-     scaffoldBackgroundColor: isDarkTheme ? Colors.black :Colors.grey.shade300,
-      primaryColor: isDarkTheme ? Colors.black : Colors.grey.shade300,
-      backgroundColor: isDarkTheme ? Colors.grey.shade700 : Colors.white,
-      indicatorColor: isDarkTheme ? const Color(0xff0E1D36) : const Color(0xffCBDCF8),
-      // ignore: deprecated_member_use
-      buttonColor: isDarkTheme ? const Color(0xff3B3B3B) : const Color(0xffF1F5FB),
-      hintColor: isDarkTheme ? Colors.grey.shade300 : Colors.grey.shade800,
-      highlightColor: isDarkTheme ? const Color(0xff372901) : const Color(0xffFCE192),
-      hoverColor: isDarkTheme ? const Color(0xff3A3A3B) : const Color(0xff4285F4),
-      focusColor: isDarkTheme ? const Color(0xff0B2512) : const Color(0xffA8DAB5),
-      disabledColor: Colors.grey,
-      cardColor: isDarkTheme ? const Color(0xFF151515) : Colors.white,
+      scaffoldBackgroundColor:
+          //0A1931  // white yellow 0xFFFCF8EC
+          isDarkTheme ? const Color(0xFF00001a) : const Color(0xFFFFFFFF),
+      primaryColor: Colors.blue,
+      colorScheme: ThemeData().colorScheme.copyWith(
+            secondary:
+                isDarkTheme ? const Color(0xFF1a1f3c) : const Color(0xFFE8FDFD),
+            brightness: isDarkTheme ? Brightness.dark : Brightness.light,
+          ),
+      cardColor:
+          isDarkTheme ? const Color(0xFF0a0d2c) : const Color(0xFFF2FDFD),
       canvasColor: isDarkTheme ? Colors.black : Colors.grey[50],
-      brightness: isDarkTheme ? Brightness.dark : Brightness.light,
       buttonTheme: Theme.of(context).buttonTheme.copyWith(
-          colorScheme: isDarkTheme ? const ColorScheme.dark() : const ColorScheme.light()),
-      appBarTheme: const AppBarTheme(
-        elevation: 0.0,
-      ), colorScheme: ColorScheme.fromSwatch(primarySwatch: Colors.purple).copyWith(secondary: Colors.deepPurple), textSelectionTheme: TextSelectionThemeData(selectionColor: isDarkTheme ? Colors.white : Colors.black),
+          colorScheme: isDarkTheme
+              ? const ColorScheme.dark()
+              : const ColorScheme.light()),
     );
   }
 }
