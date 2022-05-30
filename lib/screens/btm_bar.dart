@@ -1,12 +1,14 @@
+import 'package:badges/badges.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:localmarket/screens/cart.dart';
 import 'package:localmarket/screens/categories.dart';
 import 'package:localmarket/screens/home_screen.dart';
 import 'package:localmarket/screens/user.dart';
+import 'package:localmarket/widgets/text_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/dark_theme_provider.dart';
+import 'cart/cart_screen.dart';
 
 class BottomBarScreen extends StatefulWidget {
   const BottomBarScreen({Key? key}) : super(key: key);
@@ -16,12 +18,24 @@ class BottomBarScreen extends StatefulWidget {
 }
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
-  int _selectedIndex = 3;
+  int _selectedIndex = 2;
   final List<Map<String, dynamic>> _pages = [
-    {'page': const HomeScreen(), 'title': 'Home Screen'},
-    {'page': const CategoriesScreen(), 'title': 'Categories Screen'},
-    {'page': const CartScreen(), 'title': 'Cart Screen'},
-    {'page': const UserScreen(), 'title': 'user Screen'},
+    {
+      'page': const HomeScreen(),
+      'title': 'Home Screen',
+    },
+    {
+      'page': CategoriesScreen(),
+      'title': 'Categories Screen',
+    },
+    {
+      'page': const CartScreen(),
+      'title': 'Cart Screen',
+    },
+    {
+      'page': const UserScreen(),
+      'title': 'user Screen',
+    },
   ];
   void _selectedPage(int index) {
     setState(() {
@@ -60,7 +74,17 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
             label: "Categories",
           ),
           BottomNavigationBarItem(
-            icon: Icon(_selectedIndex == 2 ? IconlyBold.buy : IconlyLight.buy),
+            icon: Badge(
+                toAnimate: true,
+                shape: BadgeShape.circle,
+                badgeColor: Colors.blue,
+                borderRadius: BorderRadius.circular(8),
+                position: BadgePosition.topEnd(top: -7, end: -7),
+                badgeContent: FittedBox(
+                    child: TextWidget(
+                        text: '1', color: Colors.white, textSize: 15)),
+                child: Icon(
+                    _selectedIndex == 2 ? IconlyBold.buy : IconlyLight.buy)),
             label: "Cart",
           ),
           BottomNavigationBarItem(

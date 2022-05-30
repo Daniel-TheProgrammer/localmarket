@@ -1,6 +1,10 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:localmarket/screens/orders/orders_screen.dart';
+import 'package:localmarket/screens/viewed_recently/viewed_recently.dart';
+import 'package:localmarket/screens/wishlist/wishlist_screen.dart';
+import 'package:localmarket/services/global_methods.dart';
 import 'package:localmarket/widgets/text_widget.dart';
 import 'package:provider/provider.dart';
 
@@ -91,19 +95,28 @@ class _UserScreenState extends State<UserScreen> {
               _listTiles(
                 title: 'Orders',
                 icon: IconlyLight.bag,
-                onPressed: () {},
+                onPressed: () {
+                  GlobalMethods.navigateTo(
+                      ctx: context, routeName: OrdersScreen.routeName);
+                },
                 color: color,
               ),
               _listTiles(
                 title: 'Wishlist',
                 icon: IconlyLight.heart,
-                onPressed: () {},
+                onPressed: () {
+                  GlobalMethods.navigateTo(
+                      ctx: context, routeName: WishlistScreen.routeName);
+                },
                 color: color,
               ),
               _listTiles(
                 title: 'Viewed',
                 icon: IconlyLight.show,
-                onPressed: () {},
+                onPressed: () {
+                  GlobalMethods.navigateTo(
+                      ctx: context, routeName: ViewedRecentlyScreen.routeName);
+                },
                 color: color,
               ),
               _listTiles(
@@ -132,7 +145,13 @@ class _UserScreenState extends State<UserScreen> {
               _listTiles(
                 title: 'Logout',
                 icon: IconlyLight.logout,
-                onPressed: () {},
+                onPressed: () {
+                  GlobalMethods.warningDialog(
+                      title: 'Sign out',
+                      subtitle: 'Do you wanna sign out?',
+                      fct: () {},
+                      context: context);
+                },
                 color: color,
               ),
               // listTileAsRow(),
