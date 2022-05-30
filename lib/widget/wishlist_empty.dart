@@ -3,7 +3,7 @@ import 'package:localmarket/provider/dark_theme_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-class CartEmpty extends StatelessWidget {
+class WishlistEmpty extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final themeChange = Provider.of<DarkThemeProvider>(context);
@@ -11,29 +11,29 @@ class CartEmpty extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          margin: const EdgeInsets.only(top: 80),
+          margin: EdgeInsets.only(top: 80),
           width: double.infinity,
           height: MediaQuery.of(context).size.height * 0.4,
-          decoration: const BoxDecoration(
-            image: const DecorationImage(
+          decoration: BoxDecoration(
+            image: DecorationImage(
               fit: BoxFit.fill,
-              image: const AssetImage('assets/images/emptycart.png'),
+              image: AssetImage('assets/images/empty-wishlist.png'),
             ),
           ),
         ),
         Text(
-          'Your Cart Is Empty',
+          'Your Wishlist Is Empty',
           textAlign: TextAlign.center,
           style: TextStyle(
               color: Theme.of(context).textSelectionColor,
               fontSize: 36,
               fontWeight: FontWeight.w600),
         ),
-        const SizedBox(
+        SizedBox(
           height: 30,
         ),
         Text(
-          'Looks Like You didn\'t \n add anything to your cart yet',
+          'Explore more and shortlist some items',
           textAlign: TextAlign.center,
           style: TextStyle(
               color: themeChange.darkTheme
@@ -42,7 +42,7 @@ class CartEmpty extends StatelessWidget {
               fontSize: 26,
               fontWeight: FontWeight.w600),
         ),
-        const SizedBox(
+        SizedBox(
           height: 30,
         ),
         Container(
@@ -52,11 +52,11 @@ class CartEmpty extends StatelessWidget {
             onPressed: () {},
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
-              side: const BorderSide(color: Colors.red),
+              side: BorderSide(color: Colors.red),
             ),
             color: Colors.redAccent,
             child: Text(
-              'shop now'.toUpperCase(),
+              'Add a wish'.toUpperCase(),
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Theme.of(context).textSelectionColor,

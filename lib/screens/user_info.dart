@@ -1,5 +1,7 @@
 import 'package:localmarket/consts/colors.dart';
+import 'package:localmarket/consts/my_icons.dart';
 import 'package:localmarket/provider/dark_theme_provider.dart';
+import 'package:localmarket/screens/wishlist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:list_tile_switch/list_tile_switch.dart';
@@ -11,18 +13,17 @@ class UserInfo extends StatefulWidget {
 }
 
 class _UserInfoState extends State<UserInfo> {
-  bool _value = false;
-  late ScrollController _scrollController;
+   ScrollController _scrollController;
   var top = 0.0;
   @override
   void initState() {
-  
     super.initState();
-    _scrollController =ScrollController();
-    _scrollController.addListener(() {setState(() {
-      
-    });});
+    _scrollController = ScrollController();
+    _scrollController.addListener(() {
+      setState(() {});
+    });
   }
+
   @override
   Widget build(BuildContext context) {
     final themeChange = Provider.of<DarkThemeProvider>(context);
@@ -37,8 +38,8 @@ class _UserInfoState extends State<UserInfo> {
                 elevation: 4,
                 expandedHeight: 200,
                 pinned: true,
-                flexibleSpace: LayoutBuilder(
-                    builder: (BuildContext context, BoxConstraints constraints) {
+                flexibleSpace: LayoutBuilder(builder:
+                    (BuildContext context, BoxConstraints constraints) {
                   top = constraints.biggest.height;
                   return Container(
                     decoration: BoxDecoration(
@@ -115,19 +116,48 @@ class _UserInfoState extends State<UserInfo> {
                   children: [
                     Padding(
                         padding: const EdgeInsets.only(left: 8.0),
+                        child: userTitle('User Bag')),
+                    Divider(
+                      thickness: 1,
+                      color: Colors.grey,
+                    ),
+                    Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        splashColor: Theme.of(context).splashColor,
+                        child: ListTile(
+                          onTap: () => Navigator.of(context).pushNamed(
+                            WishlistScreen.routeName
+                          ),
+                          title: Text('Wishlist'),
+                          trailing: Icon(Icons.chevron_right_rounded),
+                          leading: Icon(MyAppIcons.wishlist),
+                        ),
+                      ),
+                    ),
+                     Material(
+                      color: Colors.transparent,
+                      child: InkWell(
+                        splashColor: Theme.of(context).splashColor,
+                        child: ListTile(
+                          onTap: () {},
+                          title: Text('Cart'),
+                          trailing: Icon(Icons.chevron_right_rounded),
+                          leading: Icon(MyAppIcons.cart),
+                        ),
+                      ),
+                    ),
+                    Padding(
+                        padding: const EdgeInsets.only(left: 8.0),
                         child: userTitle('User Information')),
                     Divider(
                       thickness: 1,
                       color: Colors.grey,
                     ),
                     userListTile('Email', 'Email sub', 0, context),
-                    userListTile('Email', 'Email sub', 0, context),
-                    userListTile('Email', 'Email sub', 0, context),
-                    userListTile('Email', 'Email sub', 0, context),
-                    userListTile('Email', 'Email sub', 0, context),
-                    userListTile('Phone number', '4555', 0, context),
-                    userListTile('Shipping address', '', 0, context),
-                    userListTile('joined date', 'date', 0, context),
+                    userListTile('Phone number', '4555', 1, context),
+                    userListTile('Shipping address', '', 2, context),
+                    userListTile('joined date', 'date', 3, context),
                     Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: userTitle('User settings'),
@@ -160,9 +190,8 @@ class _UserInfoState extends State<UserInfo> {
       ),
     );
   }
- 
 
- Widget _buildFab() {
+  Widget _buildFab() {
     //starting fab position
     final double defaultTopMargin = 200.0 - 4.0;
     //pixels from top where scaling should start
@@ -187,16 +216,17 @@ class _UserInfoState extends State<UserInfo> {
       }
     }
 
-return  Positioned(
+    return Positioned(
       top: top,
       right: 16.0,
-      child:  Transform(
-        transform:  Matrix4.identity()..scale(scale),
+      child: Transform(
+        transform: Matrix4.identity()..scale(scale),
         alignment: Alignment.center,
-        child:  FloatingActionButton(
+        child: FloatingActionButton(
+          backgroundColor: Colors.purple,
           heroTag: "btn1",
-          onPressed: (){},
-          child:  Icon(Icons.camera_alt_outlined),
+          onPressed: () {},
+          child: Icon(Icons.camera_alt_outlined),
         ),
       ),
     );

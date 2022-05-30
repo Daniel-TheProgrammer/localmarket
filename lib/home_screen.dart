@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
+  const HomeScreen({Key key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         body: CustomScrollView(
       slivers: [
-        SliverAppBar(
+        const SliverAppBar(
           pinned: true,
           title: Text(
             'Sliver appbar tutorial',
@@ -18,7 +20,7 @@ class HomeScreen extends StatelessWidget {
         SliverList(
             delegate: SliverChildBuilderDelegate(
           (context, index) {
-            return Text('Hello world');
+            return const Text('Hello world');
           },
           childCount: 50,
         )),

@@ -8,15 +8,17 @@ import 'feeds.dart';
 import 'home.dart';
 
 class BottomBarScreen extends StatefulWidget {
+  const BottomBarScreen({Key key}) : super(key: key);
+
   @override
   _BottomBarScreenState createState() => _BottomBarScreenState();
 }
 
 class _BottomBarScreenState extends State<BottomBarScreen> {
-  late List<Map<String, Object>> _pages;
+   List<Map<String, Widget>> _pages;
 
   
-  int _selectedPageIndex = 3;
+  int _selectedPageIndex = 0;
 
   @override
   void initState() {
@@ -31,7 +33,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
         'page': Search(),
       },
       {
-        'page': Cart(),
+        'page': CartScreen(),
       },
       {
         'page': UserInfo(),
@@ -76,26 +78,26 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
               items: [
                 BottomNavigationBarItem(
                   icon: Icon(MyAppIcons.home),
-                  title: Text('Home'),
+                  label: 'Home',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(MyAppIcons.rss),
-                  title: Text('Feeds'),
+                  label: 'Feeds',
                 ),
                 BottomNavigationBarItem(
                   activeIcon: null,
                   icon: Icon(null),
-                  title: Text('Search'),
+                  label: 'Search',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(
                     MyAppIcons.bag,
                   ),
-                  title: Text('Cart'),
+                  label: 'Cart',
                 ),
                 BottomNavigationBarItem(
                   icon: Icon(MyAppIcons.user),
-                  title: Text('User'),
+                  label: 'User',
                 ),
               ],
             ),
@@ -107,6 +109,7 @@ class _BottomBarScreenState extends State<BottomBarScreen> {
       floatingActionButton: Padding(
         padding: const EdgeInsets.all(8.0),
         child: FloatingActionButton(
+          backgroundColor: Colors.purple,
           hoverElevation: 10,
           splashColor: Colors.grey,
           tooltip: 'Search',

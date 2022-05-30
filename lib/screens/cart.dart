@@ -1,15 +1,15 @@
+import 'package:localmarket/consts/colors.dart';
 import 'package:localmarket/consts/my_icons.dart';
+import 'package:localmarket/widget/cart_empty.dart';
+import 'package:localmarket/widget/cart_full.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
 
-import 'cart_empty.dart';
-import 'cart_full.dart';
-
-class Cart extends StatelessWidget {
+class CartScreen extends StatelessWidget {
+  static const routeName = '/CartScreen';
   @override
   Widget build(BuildContext context) {
     List products = [];
-    return !products.isEmpty
+    return products.isEmpty
         ? Scaffold(body: CartEmpty())
         : Scaffold(
             bottomSheet: checkoutSection(context),
@@ -24,10 +24,13 @@ class Cart extends StatelessWidget {
             ),
             body: Container(
               margin: EdgeInsets.only(bottom: 60),
-              child: ListView.builder(itemCount: 5,itemBuilder: (BuildContext ctx, int index){
-                return CartFull();
-              }),
-            ));
+              child: ListView.builder(
+                  itemCount: 5,
+                  itemBuilder: (BuildContext ctx, int index) {
+                    return CartFull();
+                  }),
+            ),
+          );
   }
 
   Widget checkoutSection(BuildContext ctx) {
@@ -44,21 +47,33 @@ class Cart extends StatelessWidget {
             children: [
               Expanded(
                 flex: 2,
-                child: Material(
-                  borderRadius: BorderRadius.circular(30),
-                  color: Colors.red,
-                  child: InkWell(
+                child: Container(
+                  decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(30),
-                    onTap: () {},
-                    child: Padding(
-                      padding: const EdgeInsets.all(8.0),
-                      child: Text(
-                        'Checkout',
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                            color: Theme.of(ctx).textSelectionColor,
-                            fontSize: 18,
-                            fontWeight: FontWeight.w600),
+                    gradient: LinearGradient(colors: [
+                      ColorsConsts.gradiendLStart,
+                      ColorsConsts.gradiendLEnd,
+                    ], stops: [
+                      0.0,
+                      0.7
+                    ]),
+                  ),
+                  child: Material(
+                    color: Colors.transparent,
+                    child: InkWell(
+                      borderRadius: BorderRadius.circular(30),
+                      onTap: () {},
+                      splashColor: Theme.of(ctx).splashColor,
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Text(
+                          'Checkout',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Theme.of(ctx).textSelectionColor,
+                              fontSize: 18,
+                              fontWeight: FontWeight.w600),
+                        ),
                       ),
                     ),
                   ),

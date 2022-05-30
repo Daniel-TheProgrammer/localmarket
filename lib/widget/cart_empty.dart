@@ -11,13 +11,13 @@ class CartEmpty extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
         Container(
-          margin: const EdgeInsets.only(top: 80),
+          margin: EdgeInsets.only(top: 80),
           width: double.infinity,
           height: MediaQuery.of(context).size.height * 0.4,
-          decoration: const BoxDecoration(
-            image: const DecorationImage(
+          decoration: BoxDecoration(
+            image: DecorationImage(
               fit: BoxFit.fill,
-              image: const AssetImage('assets/images/emptycart.png'),
+              image: AssetImage('assets/images/emptycart.png'),
             ),
           ),
         ),
@@ -29,7 +29,7 @@ class CartEmpty extends StatelessWidget {
               fontSize: 36,
               fontWeight: FontWeight.w600),
         ),
-        const SizedBox(
+        SizedBox(
           height: 30,
         ),
         Text(
@@ -42,7 +42,7 @@ class CartEmpty extends StatelessWidget {
               fontSize: 26,
               fontWeight: FontWeight.w600),
         ),
-        const SizedBox(
+        SizedBox(
           height: 30,
         ),
         Container(
@@ -52,11 +52,11 @@ class CartEmpty extends StatelessWidget {
             onPressed: () {},
             shape: RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(16),
-              side: const BorderSide(color: Colors.red),
+              side: BorderSide(color: Colors.red),
             ),
             color: Colors.redAccent,
             child: Text(
-              'shop now'.toUpperCase(),
+              'Shop now'.toUpperCase(),
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Theme.of(context).textSelectionColor,
