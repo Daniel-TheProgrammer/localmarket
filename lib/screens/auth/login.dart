@@ -52,7 +52,7 @@ class _LoginScreenState extends State<LoginScreen> {
             password: _passTextController.text.trim());
         Navigator.of(context).pushReplacement(MaterialPageRoute(
           builder: (context) => const BottomBarScreen(),
-        ));
+        ),);
         print('Succefully logged in');
       } on FirebaseException catch (error) {
         GlobalMethods.errorDialog(
@@ -231,7 +231,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   const SizedBox(
                     height: 10,
                   ),
-                  const GoogleButton(),
+                 GoogleButton(),
                   const SizedBox(
                     height: 10,
                   ),
