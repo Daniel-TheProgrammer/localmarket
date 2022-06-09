@@ -31,7 +31,7 @@ class CartScreen extends StatelessWidget {
                 elevation: 0,
                 backgroundColor: Theme.of(context).scaffoldBackgroundColor,
                 title: TextWidget(
-                  text: 'Cart (XAF{cartItemsList.length})',
+                  text: 'Cart (${cartItemsList.length})',
                   color: color,
                   isTitle: true,
                   textSize: 22,
@@ -102,7 +102,7 @@ class CartScreen extends StatelessWidget {
           const Spacer(),
           FittedBox(
             child: TextWidget(
-              text: 'Total: \XAF0.259',
+              text: 'Total: \$0.259',
               color: color,
               textSize: 18,
               isTitle: true,

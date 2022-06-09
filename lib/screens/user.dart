@@ -1,6 +1,8 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
+import 'package:localmarket/consts/firebase_consts.dart';
 import 'package:localmarket/screens/orders/orders_screen.dart';
 import 'package:localmarket/screens/viewed_recently/viewed_recently.dart';
 import 'package:localmarket/screens/wishlist/wishlist_screen.dart';
@@ -9,6 +11,7 @@ import 'package:localmarket/widgets/text_widget.dart';
 import 'package:provider/provider.dart';
 
 import '../provider/dark_theme_provider.dart';
+import 'auth/login.dart';
 
 class UserScreen extends StatefulWidget {
   const UserScreen({Key? key}) : super(key: key);
@@ -26,6 +29,7 @@ class _UserScreenState extends State<UserScreen> {
     super.dispose();
   }
 
+  final User? user = authInstance.currentUser;
   @override
   Widget build(BuildContext context) {
     final themeState = Provider.of<DarkThemeProvider>(context);
@@ -143,13 +147,28 @@ class _UserScreenState extends State<UserScreen> {
                 value: themeState.getDarkTheme,
               ),
               _listTiles(
-                title: 'Logout',
-                icon: IconlyLight.logout,
+                title: user == null ? 'Login' : 'Logout',
+                icon: user == null ? IconlyLight.login : IconlyLight.logout,
                 onPressed: () {
+                  if (user == null) {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const LoginScreen(),
+                      ),
+                    );
+                    return;
+                  }
                   GlobalMethods.warningDialog(
                       title: 'Sign out',
                       subtitle: 'Do you wanna sign out?',
-                      fct: () {},
+                      fct: () async {
+                        await authInstance.signOut();
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const LoginScreen(),
+                          ),
+                        );
+                      },
                       context: context);
                 },
                 color: color,

@@ -61,11 +61,10 @@ class GlobalMethods {
         });
   }
 
-  static void errorDialog({required String subtitle, required BuildContext context}) {}
-}
+   static Future<void> errorDialog({
 
-  Future<void> errorDialog({
     required String subtitle,
+    
     required BuildContext context,
   }) async {
     await showDialog(
@@ -82,7 +81,7 @@ class GlobalMethods {
               const SizedBox(
                 width: 8,
               ),
-              const Text('An Error Occured'),
+              const Text('An Error occured'),
             ]),
             content: Text(subtitle),
             actions: [
@@ -98,9 +97,11 @@ class GlobalMethods {
                   textSize: 18,
                 ),
               ),
+             
             ],
           );
         });
   }
+}
 
 

@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:localmarket/screens/auth/forget_pass.dart';
 import 'package:localmarket/screens/auth/register.dart';
+import 'package:localmarket/screens/btm_bar.dart';
 import 'package:localmarket/services/global_methods.dart';
 
 import '../../consts/contss.dart';
@@ -190,7 +191,7 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 10,
                 ),
                 AuthButton(
-                  fct:_submitFormOnLogin,
+                  fct: _submitFormOnLogin,
                   buttonText: 'Login',
                 ),
                 const SizedBox(
@@ -231,7 +232,13 @@ class _LoginScreenState extends State<LoginScreen> {
                   height: 10,
                 ),
                 AuthButton(
-                  fct: () {},
+                  fct: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => const BottomBarScreen(),
+                      ),
+                    );
+                  },
                   buttonText: 'Continue as a guest',
                   primary: Colors.black,
                 ),

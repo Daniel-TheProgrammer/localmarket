@@ -1,18 +1,18 @@
 import 'package:card_swiper/card_swiper.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
-import 'package:localmarket/consts/firebase_consts.dart';
 import 'package:localmarket/screens/auth/login.dart';
+import 'package:localmarket/screens/btm_bar.dart';
+import 'package:localmarket/screens/loading_manager.dart';
 
 import '../../consts/contss.dart';
+import '../../consts/firebase_consts.dart';
 import '../../services/global_methods.dart';
 import '../../services/utils.dart';
 import '../../widgets/auth_button.dart';
 import '../../widgets/text_widget.dart';
-import '../loading_manager.dart';
 import 'forget_pass.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -61,6 +61,9 @@ class _RegisterScreenState extends State<RegisterScreen> {
         await authInstance.createUserWithEmailAndPassword(
             email: _emailTextController.text.toLowerCase().trim(),
             password: _passTextController.text.trim());
+        Navigator.of(context).pushReplacement(MaterialPageRoute(
+          builder: (context) => const BottomBarScreen(),
+        ));
         print('Succefully registered');
       } on FirebaseException catch (error) {
         GlobalMethods.errorDialog(
@@ -319,14 +322,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                     ),
                   ),
-                  _isLoading
-                      ? const CircularProgressIndicator()
-                      : AuthButton(
-                          buttonText: 'Sign up',
-                          fct: () {
-                            _submitFormOnRegister();
-                          },
-                        ),
+                  AuthButton(
+                    buttonText: 'Sign up',
+                    fct: () {
+                      _submitFormOnRegister();
+                    },
+                  ),
                   const SizedBox(
                     height: 10,
                   ),
