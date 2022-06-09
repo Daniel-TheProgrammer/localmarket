@@ -3,6 +3,7 @@ import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_iconly/flutter_iconly.dart';
 import 'package:localmarket/consts/firebase_consts.dart';
+import 'package:localmarket/screens/auth/forget_pass.dart';
 import 'package:localmarket/screens/orders/orders_screen.dart';
 import 'package:localmarket/screens/viewed_recently/viewed_recently.dart';
 import 'package:localmarket/screens/wishlist/wishlist_screen.dart';
@@ -126,7 +127,14 @@ class _UserScreenState extends State<UserScreen> {
               _listTiles(
                 title: 'Forget password',
                 icon: IconlyLight.unlock,
-                onPressed: () {},
+                onPressed: () {
+
+                   Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const ForgetPasswordScreen(),
+                          ),
+                        );
+                },
                 color: color,
               ),
               SwitchListTile(
